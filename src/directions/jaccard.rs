@@ -26,6 +26,10 @@ impl From<Jaccard> for f32 {
 // From pairs of keys and values
 //
 
+pub trait JaccardBulder {
+    fn compute(self) -> Jaccard;
+}
+
 pub struct JaccardFromPairs<I, J> {
     fst: Option<I>,
     snd: Option<J>,
@@ -45,11 +49,12 @@ impl<I, J> JaccardFromPairs<I, J> {
     }
 }
 
-impl<K, I: IntoIterator<Item = (K, i32)>, J: IntoIterator<Item = (K, i32)>> JaccardFromPairs<I, J>
+impl<K, I: IntoIterator<Item = (K, i32)>, J: IntoIterator<Item = (K, i32)>> JaccardBulder
+    for JaccardFromPairs<I, J>
 where
     K: Copy + Eq + Hash,
 {
-    pub fn sim(self) -> Jaccard {
+    fn compute(self) -> Jaccard {
         let fst = CountedMap::<K, i32>::from_keys_and_values(self.fst.expect(""));
         let snd = CountedMap::<K, i32>::from_keys_and_values(self.snd.expect(""));
 
@@ -83,11 +88,12 @@ impl<I, J> JaccardFromKeys<I, J> {
     }
 }
 
-impl<K, I: IntoIterator<Item = K>, J: IntoIterator<Item = K>> JaccardFromKeys<I, J>
+impl<K, I: IntoIterator<Item = K>, J: IntoIterator<Item = K>> JaccardBulder
+    for JaccardFromKeys<I, J>
 where
     K: Copy + Eq + Hash,
 {
-    pub fn sim(self) -> Jaccard {
+    fn compute(self) -> Jaccard {
         let fst = CountedMap::<K, i32>::from_keys(self.fst.expect(""));
         let snd = CountedMap::<K, i32>::from_keys(self.snd.expect(""));
 
@@ -106,24 +112,24 @@ mod tests {
     fn jaccard_from_pairs() {
         let xs = [("a", 3), ("b", 1)];
         let ys = [("a", 2), ("b", 2), ("c", 1)];
-        let jsim = Jaccard::from_pairs(xs).and_with(ys).sim();
-        assert_eq!(3, jsim.cmn);
-        assert_eq!(9, jsim.ttl);
+        let j = Jaccard::from_pairs(xs).and_with(ys).compute();
+        assert_eq!(3, j.cmn);
+        assert_eq!(9, j.ttl);
     }
 
     #[test]
     fn jaccard_f32_from_pairs() {
         let xs = [("a", 3), ("b", 1)];
         let ys = [("a", 2), ("b", 2), ("c", 1)];
-        let jsim: f32 = Jaccard::from_pairs(xs).and_with(ys).sim().into();
-        assert_eq!(1 as f32 / 3 as f32, jsim);
+        let j: f32 = Jaccard::from_pairs(xs).and_with(ys).compute().into();
+        assert_eq!(1 as f32 / 3 as f32, j);
     }
 
     #[test]
     fn jaccard_from_keys() {
         let xs = ["a", "a", "b", "a"];
         let ys = ["a", "b", "b", "a", "c"];
-        let jsim = Jaccard::from_keys(xs).and_with(ys).sim();
+        let jsim = Jaccard::from_keys(xs).and_with(ys).compute();
         assert_eq!(3, jsim.cmn);
         assert_eq!(9, jsim.ttl);
     }
@@ -132,7 +138,7 @@ mod tests {
     fn jaccard_f32_from_keys() {
         let xs = ["a", "a", "b", "a"];
         let ys = ["a", "b", "b", "a", "c"];
-        let jsim: f32 = Jaccard::from_keys(xs).and_with(ys).sim().into();
+        let jsim: f32 = Jaccard::from_keys(xs).and_with(ys).compute().into();
         assert_eq!(1 as f32 / 3 as f32, jsim);
     }
 }
