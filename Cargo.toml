@@ -1,5 +1,5 @@
 [package]
-name = "aabel-rs"
+name = "aabel"
 version = "0.1.0"
 edition = "2021"
 

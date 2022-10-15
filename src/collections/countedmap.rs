@@ -7,7 +7,7 @@ use std::fmt::Debug;
 use std::hash::{BuildHasher, Hash};
 use std::ops::AddAssign;
 
-use crate::{FromKeys, FromKeysAndValues};
+use super::{FromKeysAndValues, FromKeys};
 
 pub struct CountedMap<K, V, S = RandomState> {
     base: HashMap<K, V, S>,
@@ -190,8 +190,7 @@ where
 
 #[cfg(test)]
 mod tests {
-    use super::CountedMap;
-    use crate::{FromKeys, FromKeysAndValues};
+    use super::{CountedMap, FromKeys, FromKeysAndValues};
 
     #[test]
     fn from_keys_() {
