@@ -199,10 +199,13 @@ mod tests {
         let cmap = CountedMap::<&str, i32>::from_keys(keys);
 
         assert_eq!(cmap.len(), 3);
+        assert!(!cmap.is_empty());
         assert_eq!(cmap.get(&"a"), Some(&2));
         assert_eq!(cmap.get(&"b"), Some(&1));
         assert_eq!(cmap.get(&"c"), Some(&1));
         assert_eq!(cmap.total(), &4);
+
+        eprintln!("CMAP: {:?}", &cmap);
     }
 
     #[test]
