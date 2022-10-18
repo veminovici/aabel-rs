@@ -7,7 +7,7 @@ use std::fmt::Debug;
 use std::hash::{BuildHasher, Hash};
 use std::ops::AddAssign;
 
-use super::{FromKeysAndValues, FromKeys};
+use super::{FromKeys, FromKeysAndValues};
 
 pub struct CountedMap<K, V, S = RandomState> {
     base: HashMap<K, V, S>,
