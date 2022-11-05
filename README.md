@@ -1,5 +1,7 @@
 # AABEL
 
+[![Rust](https://github.com/veminovici/aabel-rs/actions/workflows/rust.yml/badge.svg?branch=main)](https://github.com/veminovici/aabel-rs/actions/workflows/rust.yml)
+
 ## 1. Collections
 
 
