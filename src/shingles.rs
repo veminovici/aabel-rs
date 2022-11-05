@@ -68,14 +68,20 @@ mod tests {
         assert_eq!(None, ss.next());
     }
 
+    // gets the word-shingles from a given text. The shingles can start only from a stop-word and they have a length of 3.
     #[test]
     fn singles_words_() {
-        let text = "A spokeperson for the Sudzo Corporation revealed today that studies have shown it is good for people to buy Sudzo products".split_whitespace().collect::<Vec<&str>>();
+        const SHINGLE_LENGTH: usize = 3;
+        let text = "A spokeperson for the Sudzo Corporation \
+        revealed today that studies have shown it is good for people \
+        to buy Sudzo products"
+            .split_whitespace()
+            .collect::<Vec<&str>>();
 
         let stop_words = ["A", "for", "the", "to", "that"].as_slice();
-        let pred = |w: &&str| stop_words.contains(w);
+        let is_stop_word = |w: &&str| stop_words.contains(w);
 
-        let mut ss = shingles(text.as_slice(), 3, pred);
+        let mut ss = shingles(text.as_slice(), SHINGLE_LENGTH, is_stop_word);
         assert_eq!(Some(["A", "spokeperson", "for"].as_slice()), ss.next());
         assert_eq!(Some(["for", "the", "Sudzo"].as_slice()), ss.next());
         assert_eq!(Some(["the", "Sudzo", "Corporation"].as_slice()), ss.next());
