@@ -1,4 +1,4 @@
 /target
 /Cargo.lock
-/*.profraw
-/.DS_Store
+/coverage
+.DS_Store

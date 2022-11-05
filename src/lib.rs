@@ -1,5 +1,6 @@
-pub mod collections;
+pub mod counted_bag;
 pub mod distances;
+pub mod shingles;
 
-// pub use collections::*;
-// pub use distances::*;
+//pub use counted_set::CountedSet;
+//pub use distances::*;
