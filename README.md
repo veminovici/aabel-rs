@@ -5,7 +5,7 @@
 
 ### 1.1. CountedBag
 **CountedBag** is a data structure which is counting the number of occurences of a given key inside a collection of keys.
-It is implemented in the **rust_aabel::counted_bag** module.
+It is implemented in the **rust_aabel::counted_bag** module. You can find the implementation at [counted_bag.rs](https://github.com/veminovici/aabel-rs/blob/main/src/counted_bag.rs)
 
 ```rust
 use rust_aabel::counted_bag::*;
@@ -23,7 +23,7 @@ assert_eq!(iter.count(), 2);
 
 ### 1.2 Shingles
 **Shingles** is am iterator over a slice which returns the shingles of a given size.
-It is implemented in the *8rust_aabel::shingles** module.
+It is implemented in the *8rust_aabel::shingles** module. You can find the implementation at [shingles.rs](https://github.com/veminovici/aabel-rs/blob/main/src/shingles.rs)
 
 ```rust
 use rust_aabel::shingles::*;
