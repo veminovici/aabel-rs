@@ -72,8 +72,8 @@ mod tests {
     fn singles_words_() {
         let text = "A spokeperson for the Sudzo Corporation revealed today that studies have shown it is good for people to buy Sudzo products".split_whitespace().collect::<Vec<&str>>();
 
-        let words = ["A", "for", "the", "to", "that"].as_slice();
-        let pred = |w: &&str| words.contains(w);
+        let stop_words = ["A", "for", "the", "to", "that"].as_slice();
+        let pred = |w: &&str| stop_words.contains(w);
 
         let mut ss = shingles(text.as_slice(), 3, pred);
         assert_eq!(Some(["A", "spokeperson", "for"].as_slice()), ss.next());

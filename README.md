@@ -73,5 +73,5 @@ export LLVM_PROFILE_FILE="./coverage/aabel-%p-%m.profraw"
 cargo build
 cargo test
 grcov ./coverage -s . --binary-path ./target/debug/ -t html --branch --ignore-not-existing -o ./target/debug/coverage/
-open ./target/debug/coverage
+open ./target/debug/coverage/index.html
 ```
