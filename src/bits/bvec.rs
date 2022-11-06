@@ -112,6 +112,38 @@ impl BVec {
     }
 }
 
+pub struct Iter {
+    bvec: BVec,
+    current: usize,
+}
+
+impl Iterator for Iter {
+    type Item = Bit;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        if self.current >= self.bvec.len {
+            None
+        } else {
+            let bit = self.bvec.get_bit(self.current);
+            self.current += 1;
+            Some(bit)
+        }
+    }
+}
+
+impl IntoIterator for BVec {
+    type Item = Bit;
+
+    type IntoIter = Iter;
+
+    fn into_iter(self) -> Self::IntoIter {
+        Iter {
+            bvec: self,
+            current: 0,
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -159,5 +191,29 @@ mod tests {
         bvec.toggle_bit(6);
 
         assert_eq!(10, bvec.vec[0]);
+    }
+
+    #[test]
+    fn bvec_into_iter_() {
+        let mut bvec = BVec::with_length(10);
+        bvec.toggle_bit(4);
+        bvec.toggle_bit(6);
+
+        let mut iter = bvec.into_iter();
+
+        assert_eq!(iter.next(), Some(Bit::Zero));
+        assert_eq!(iter.next(), Some(Bit::Zero));
+        assert_eq!(iter.next(), Some(Bit::Zero));
+        assert_eq!(iter.next(), Some(Bit::Zero));
+
+        assert_eq!(iter.next(), Some(Bit::One));
+        assert_eq!(iter.next(), Some(Bit::Zero));
+        assert_eq!(iter.next(), Some(Bit::One));
+        assert_eq!(iter.next(), Some(Bit::Zero));
+
+        assert_eq!(iter.next(), Some(Bit::Zero));
+        assert_eq!(iter.next(), Some(Bit::Zero));
+
+        assert_eq!(iter.next(), None);
     }
 }
