@@ -1,15 +1,15 @@
 use std::fmt::{Debug, Display};
 
 /// Represents a position in the array of bits.
-/// 
+///
 /// # Examples
-/// 
+///
 /// ```
 /// use aabel_rs::bits::Position;
-/// 
+///
 /// let pos = Position::from(7);
 /// let pos = pos.increment();
-/// 
+///
 /// assert_eq!(8usize, pos.into());
 /// ```
 #[derive(PartialEq, Eq, Clone, Copy)]

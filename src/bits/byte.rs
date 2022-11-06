@@ -3,17 +3,17 @@ use std::fmt::{Binary, Debug, Display, LowerHex, UpperHex};
 use super::Bit;
 
 /// Representation of a byte
-/// 
+///
 /// # Examples
-/// 
+///
 /// ```
 /// use aabel_rs::bits::{Bit, Byte};
 ///
 /// let byte = Byte::from(10);
-/// 
+///
 /// let bit = byte.get_bit(4);
 /// assert_eq!(bit, 1.into());
-/// 
+///
 /// let mut iter = byte.iter();
 /// assert_eq!(iter.next(), Some(Bit::Zero));
 /// ```
@@ -228,14 +228,14 @@ mod tests {
 
     #[test]
     fn byte_from_u8s_() {
-        let xs = [0, 0, 0 ,0, 1, 0, 1, 0];
+        let xs = [0, 0, 0, 0, 1, 0, 1, 0];
         let bit = Byte::from_iter(xs);
         assert_eq!(bit, 10_u8.into());
     }
 
     #[test]
     fn byte_from_bools_() {
-        let xs = [false, false, false ,false, true, false, true, false];
+        let xs = [false, false, false, false, true, false, true, false];
         let bit = Byte::from_iter(xs);
         assert_eq!(bit, 10_u8.into());
     }

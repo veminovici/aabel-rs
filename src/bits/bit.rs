@@ -4,15 +4,15 @@ use std::{
 };
 
 /// Representation of a bit value.
-/// 
+///
 /// # Examples
-/// 
+///
 /// ```
 /// use aabel_rs::bits::Bit;
-/// 
+///
 /// let bit = Bit::from(1);
 /// assert_eq!(bit, Bit::One);
-/// 
+///
 /// let bit = bit & Bit::Zero;
 /// assert_eq!(bit, Bit::Zero);
 /// ```
