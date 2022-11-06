@@ -11,7 +11,7 @@ pub trait Distance: Iterator {
     /// # Examples
     ///
     /// ```
-    /// use rust_aabel::distances::Distance;
+    /// use aabel_rs::distances::Distance;
     ///
     /// let it = [3., 4.].into_iter().euclid([0., 0.]);
     /// assert_eq!(5., it)
@@ -31,7 +31,7 @@ pub trait Distance: Iterator {
     /// # Examples
     ///
     /// ```
-    /// use rust_aabel::distances::Distance;
+    /// use aabel_rs::distances::Distance;
     ///
     /// let it = [3., 4.].into_iter().manhattan([0., 0.]);
     /// assert_eq!(7., it)
@@ -51,7 +51,7 @@ pub trait Distance: Iterator {
     /// # Examples
     ///
     /// ```
-    /// use rust_aabel::distances::Distance;
+    /// use aabel_rs::distances::Distance;
     ///
     /// let it = ['k', 'a', 'r', 'o', 'l', 'i', 'n'].into_iter().hamming(['k', 'a', 't', 'h', 'r', 'i', 'n']);
     /// assert_eq!(3, it)
@@ -71,7 +71,7 @@ pub trait Distance: Iterator {
     /// # Examples
     ///
     /// ```
-    /// use rust_aabel::distances::Distance;
+    /// use aabel_rs::distances::Distance;
     /// let xs = [('a', 1), ('b', 2), ('c', 3)];
     /// let ys = [('b', 1), ('c', 2), ('d', 3)];
     /// let it = xs.into_iter().jaccard(ys);
@@ -95,7 +95,7 @@ pub trait Distance: Iterator {
     /// # Examples
     ///
     /// ```
-    /// use rust_aabel::distances::Distance;
+    /// use aabel_rs::distances::Distance;
     /// let xs = ['a','b', 'b', 'c', 'c', 'c'];
     /// let ys = ['b', 'c', 'c', 'd', 'd', 'd'];
     /// let it = xs.into_iter().jaccard1(ys);

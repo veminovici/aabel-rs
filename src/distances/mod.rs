@@ -3,14 +3,14 @@
 //! To extend [`Iterator`] with methods in this crate, import the [`Distance`] trait:
 //!
 //! ```
-//! use rust_aabel::distances::Distance;
+//! use aabel_rs::distances::Distance;
 //! ```
 //!
 //! Now, new methods like [`euclid`](Distance::euclid)
 //! are available on all iterators:
 //!
 //! ```
-//! use rust_aabel::distances::Distance;
+//! use aabel_rs::distances::Distance;
 //!
 //! let it = [3., 4.].into_iter().euclid([0., 0.]);
 //! assert_eq!(5., it)

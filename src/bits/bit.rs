@@ -3,9 +3,24 @@ use std::{
     ops::{BitAnd, BitOr},
 };
 
+/// Representation of a bit value.
+/// 
+/// # Examples
+/// 
+/// ```
+/// use aabel_rs::bits::Bit;
+/// 
+/// let bit = Bit::from(1);
+/// assert_eq!(bit, Bit::One);
+/// 
+/// let bit = bit & Bit::Zero;
+/// assert_eq!(bit, Bit::Zero);
+/// ```
 #[derive(PartialEq, Eq, Clone, Copy)]
 pub enum Bit {
+    /// The zero bit
     Zero = 0x0,
+    /// The one bit
     One = 0x1,
 }
 

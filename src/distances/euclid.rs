@@ -5,7 +5,7 @@ use itertools::Itertools;
 /// # Examples
 ///
 /// ```
-/// use rust_aabel::distances::euclid;
+/// use aabel_rs::distances::euclid;
 ///
 /// let xys = [(3., 0.), (4., 0.)];
 /// let it = euclid(xys.into_iter());

@@ -3,7 +3,7 @@
 //! # Example
 //!
 //! ```
-//! use rust_aabel::shingles::*;
+//! use aabel_rs::shingles::*;
 //!
 //! let source = vec![1, 2, 3];
 //! let pred = |_: &i32| true;

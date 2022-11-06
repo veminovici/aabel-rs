@@ -1,3 +1,5 @@
+//! Bit-wise functionality
+
 mod bit;
 mod byte;
 

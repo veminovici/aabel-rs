@@ -18,8 +18,8 @@ impl JaccardSim {
 /// # Examples
 ///
 /// ```
-/// use rust_aabel::counted_bag::CountedBag;
-/// use rust_aabel::distances::jaccard;
+/// use aabel_rs::counted_bag::CountedBag;
+/// use aabel_rs::distances::jaccard;
 ///
 /// let xs = [('a', 1), ('b', 2), ('c', 3)];
 /// let xs = CountedBag::<char>::from_iter(xs);

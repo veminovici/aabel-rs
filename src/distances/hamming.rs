@@ -3,7 +3,7 @@
 /// # Examples
 ///
 /// ```
-/// use rust_aabel::distances::hamming;
+/// use aabel_rs::distances::hamming;
 ///
 /// let xys = [('k', 'k'), ('a', 'a'), ('r', 't'), ('o', 'h'), ('l', 'r'), ('i', 'i'), ('n', 'n')];
 /// let it = hamming(xys.into_iter());

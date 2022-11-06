@@ -2,6 +2,21 @@ use std::fmt::{Binary, Debug, Display, LowerHex, UpperHex};
 
 use super::Bit;
 
+/// Representation of a byte
+/// 
+/// # Examples
+/// 
+/// ```
+/// use aabel_rs::bits::{Bit, Byte};
+///
+/// let byte = Byte::from(10);
+/// 
+/// let bit = byte.get_bit(4);
+/// assert_eq!(bit, 1.into());
+/// 
+/// let mut iter = byte.iter();
+/// assert_eq!(iter.next(), Some(Bit::Zero));
+/// ```
 #[derive(PartialEq, Eq, Clone, Copy, PartialOrd, Ord)]
 pub struct Byte(u8);
 
@@ -139,6 +154,8 @@ impl IntoIterator for Byte {
     }
 }
 
+/// Represents an iterator over a byte.
+/// The elements of the iteration are [`Bit`] instances.
 pub struct Iter {
     byte: Byte,
     crnt: u8,
