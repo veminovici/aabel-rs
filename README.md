@@ -1,6 +1,8 @@
 # AABEL
 
 [![Rust](https://github.com/veminovici/aabel-rs/actions/workflows/rust.yml/badge.svg?branch=main)](https://github.com/veminovici/aabel-rs/actions/workflows/rust.yml)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/veminovici/aabel-rs)
+
 
 ## 1. Collections
 
