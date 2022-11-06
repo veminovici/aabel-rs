@@ -1,8 +1,17 @@
 # AABEL
+A Rust crate for different base functionalities.
 
 [![Rust](https://github.com/veminovici/aabel-rs/actions/workflows/rust.yml/badge.svg?branch=main)](https://github.com/veminovici/aabel-rs/actions/workflows/rust.yml)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/veminovici/aabel-rs)
 
+- [Collections](https://github.com/veminovici/aabel-rs#1-collections)
+  - [CountedBag](https://github.com/veminovici/aabel-rs#11-countedbag)
+  - [Shringles](https://github.com/veminovici/aabel-rs#12-shingles)
+- [Distances](https://github.com/veminovici/aabel-rs#2-distances)
+  - [Jaccard](https://github.com/veminovici/aabel-rs#21-jaccard-distance)
+  - [Euclidean](https://github.com/veminovici/aabel-rs#22-euclidean-distance)
+  - [Manhattan](https://github.com/veminovici/aabel-rs#23-manhattan-distance)
+- [Test Coverage](https://github.com/veminovici/aabel-rs#test-coverage)
 
 ## 1. Collections
 
@@ -12,7 +21,7 @@
 It is implemented in the **rust_aabel::counted_bag** module. You can find the implementation at [counted_bag.rs](https://github.com/veminovici/aabel-rs/blob/main/src/counted_bag.rs)
 
 ```rust
-use rust_aabel::collections::CountedBag;
+use aabel_rs::collections::CountedBag;
 
 let xs = [('a', 1), ('b', 1), ('c', 20), ('d', 30)];
 let xs = CountedBag::<char>::from_iter(xs);
@@ -30,7 +39,7 @@ assert_eq!(iter.count(), 2);
 It is implemented in the *8rust_aabel::shingles** module. You can find the implementation at [shingles.rs](https://github.com/veminovici/aabel-rs/blob/main/src/shingles.rs)
 
 ```rust
-use rust_aabel::collections::{shingles, Shingles};
+use aabel_rs::collections::{shingles, Shingles};
 let source = vec![1, 2, 3];
 
 let is_start = |_: &i32| true;
