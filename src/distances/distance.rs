@@ -2,7 +2,7 @@ use std::hash::Hash;
 
 use itertools::Itertools;
 
-use crate::counted_bag::CountedBag;
+use crate::collections::CountedBag;
 
 /// Retrieves a distance.
 pub trait Distance: Iterator {

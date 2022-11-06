@@ -17,7 +17,7 @@ use std::{
 /// # Examples
 ///
 /// ```
-/// use aabel_rs::counted_bag::CountedBag;
+/// use aabel_rs::collections::CountedBag;
 /// let mut cs= CountedBag::<char>::new();
 /// cs.insert('a');
 /// cs.insert('b');
@@ -43,7 +43,7 @@ where
     /// # Examples
     ///
     /// ```
-    /// use aabel_rs::counted_bag::CountedBag;
+    /// use aabel_rs::collections::CountedBag;
     /// let mut cs= CountedBag::<char>::default();
     /// ```
     fn default() -> Self {
@@ -66,7 +66,7 @@ where
     /// # Examples
     ///
     /// ```
-    /// use aabel_rs::counted_bag::CountedBag;
+    /// use aabel_rs::collections::CountedBag;
     /// let mut cs= CountedBag::<char>::new();
     /// ```
     pub fn new() -> Self {
@@ -80,7 +80,7 @@ impl<K, S> CountedBag<K, S> {
     /// # Examples
     ///
     /// ```
-    /// use aabel_rs::counted_bag::CountedBag;
+    /// use aabel_rs::collections::CountedBag;
     /// let mut cs= CountedBag::<char>::default();
     ///
     /// let x = cs.insert('a');
@@ -100,7 +100,7 @@ impl<K, S> CountedBag<K, S> {
     /// # Example
     ///
     /// ```
-    /// use aabel_rs::counted_bag::CountedBag;
+    /// use aabel_rs::collections::CountedBag;
     /// let mut cs= CountedBag::<char>::default();
     ///
     /// assert!(cs.is_empty());
@@ -117,7 +117,7 @@ impl<K, S> CountedBag<K, S> {
     /// # Examples
     ///
     /// ```
-    /// use aabel_rs::counted_bag::CountedBag;
+    /// use aabel_rs::collections::CountedBag;
     /// let mut cs= CountedBag::<char>::new();
     /// cs.insert('a');
     /// cs.insert('b');
@@ -148,7 +148,7 @@ where
     /// # Examples
     ///
     /// ```
-    /// use aabel_rs::counted_bag::CountedBag;
+    /// use aabel_rs::collections::CountedBag;
     ///
     /// let mut cs = CountedBag::<char>::new();
     /// cs.insert('a');
@@ -168,7 +168,7 @@ where
     /// # Examples
     ///
     /// ```
-    /// use aabel_rs::counted_bag::CountedBag;
+    /// use aabel_rs::collections::CountedBag;
     ///
     /// let mut cs= CountedBag::<char>::new();
     /// let x = cs.insert('a');
@@ -210,7 +210,7 @@ impl<K, S> CountedBag<K, S> {
     /// # Examples
     ///
     /// ```
-    /// use aabel_rs::counted_bag::CountedBag;
+    /// use aabel_rs::collections::CountedBag;
     ///
     /// let mut cs = CountedBag::<char>::new();
     /// cs.insert('a');
@@ -237,7 +237,7 @@ impl<K, S> CountedBag<K, S> {
 /// # Example
 ///
 /// ```
-/// use aabel_rs::counted_bag::CountedBag;
+/// use aabel_rs::collections::CountedBag;
 ///
 /// let mut cs = CountedBag::<char>::new();
 /// cs.insert('a');
@@ -312,7 +312,7 @@ impl<K, S> IntoIterator for CountedBag<K, S> {
     /// # Example
     ///
     /// ```
-    /// use aabel_rs::counted_bag::CountedBag;
+    /// use aabel_rs::collections::CountedBag;
     ///
     /// let mut cs = CountedBag::<char>::new();
     /// cs.insert('a');
@@ -373,7 +373,7 @@ where
 /// # Examples
 ///
 /// ```
-/// use aabel_rs::counted_bag::CountedBag;
+/// use aabel_rs::collections::CountedBag;
 ///
 /// let mut xs = CountedBag::<char>::new();
 /// xs.insert('a');
@@ -646,7 +646,7 @@ mod tests {
     }
 
     #[test]
-    fn intersection_counted_bag() {
+    fn intersection_collections() {
         let xs = [('a', 2), ('b', 1), ('x', 10)];
         let xs = CountedBag::<char>::from_iter(xs);
 

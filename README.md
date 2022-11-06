@@ -12,7 +12,7 @@
 It is implemented in the **rust_aabel::counted_bag** module. You can find the implementation at [counted_bag.rs](https://github.com/veminovici/aabel-rs/blob/main/src/counted_bag.rs)
 
 ```rust
-use rust_aabel::counted_bag::*;
+use rust_aabel::collections::CountedBag;
 
 let xs = [('a', 1), ('b', 1), ('c', 20), ('d', 30)];
 let xs = CountedBag::<char>::from_iter(xs);
@@ -30,7 +30,7 @@ assert_eq!(iter.count(), 2);
 It is implemented in the *8rust_aabel::shingles** module. You can find the implementation at [shingles.rs](https://github.com/veminovici/aabel-rs/blob/main/src/shingles.rs)
 
 ```rust
-use rust_aabel::shingles::*;
+use rust_aabel::collections::{shingles, Shingles};
 let source = vec![1, 2, 3];
 
 let is_start = |_: &i32| true;

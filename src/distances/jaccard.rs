@@ -1,4 +1,4 @@
-use crate::counted_bag::CountedBag;
+use crate::collections::CountedBag;
 use std::hash::{BuildHasher, Hash};
 
 /// Represents the Jaccard similarity value.
@@ -18,7 +18,7 @@ impl JaccardSim {
 /// # Examples
 ///
 /// ```
-/// use aabel_rs::counted_bag::CountedBag;
+/// use aabel_rs::collections::CountedBag;
 /// use aabel_rs::distances::jaccard;
 ///
 /// let xs = [('a', 1), ('b', 2), ('c', 3)];

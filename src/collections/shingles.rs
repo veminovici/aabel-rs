@@ -3,7 +3,7 @@
 //! # Example
 //!
 //! ```
-//! use aabel_rs::shingles::*;
+//! use aabel_rs::collections::{shingles, Shingles};
 //!
 //! let source = vec![1, 2, 3];
 //! let pred = |_: &i32| true;
