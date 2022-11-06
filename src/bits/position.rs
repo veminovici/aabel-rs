@@ -18,8 +18,6 @@ pub struct Position {
     pub(crate) bit: u8,
 }
 
-const U8SIZE: usize = 8;
-
 impl Display for Position {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let pos: usize = (*self).into();
@@ -37,8 +35,8 @@ impl From<usize> for Position {
     #[inline]
     fn from(idx: usize) -> Self {
         Self {
-            idx: idx / U8SIZE,
-            bit: (idx % U8SIZE) as u8,
+            idx: idx / super::U8SIZE,
+            bit: (idx % super::U8SIZE) as u8,
         }
     }
 }
@@ -46,14 +44,14 @@ impl From<usize> for Position {
 impl From<Position> for usize {
     #[inline]
     fn from(pos: Position) -> Self {
-        pos.idx * U8SIZE + pos.bit as usize
+        pos.idx * super::U8SIZE + pos.bit as usize
     }
 }
 
 impl Position {
     pub fn increment(self) -> Self {
         let bit = self.bit + 1;
-        if bit as usize >= U8SIZE {
+        if bit as usize >= super::U8SIZE {
             Self {
                 idx: self.idx + 1,
                 bit: 0,

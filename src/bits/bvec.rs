@@ -1,0 +1,163 @@
+use super::{Bit, Byte, Position};
+
+pub struct BVec {
+    vec: Vec<u8>,
+    len: usize,
+}
+
+impl BVec {
+    /// Returns the length of the vector.
+    pub fn len(&self) -> usize {
+        self.len
+    }
+
+    /// Creates a new instance of the bit-vector with a given length.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use aabel_rs::bits::BVec;
+    ///
+    /// let bvec = BVec::with_length(10);
+    /// assert_eq!(10, bvec.len());
+    /// ```
+    pub fn with_length(len: usize) -> Self {
+        let capacity = len / super::U8SIZE + (if len % super::U8SIZE == 0 { 0 } else { 1 });
+        let mut vec = Vec::with_capacity(capacity);
+        let _x: usize = (0..capacity).inspect(|_| vec.push(0)).sum();
+
+        Self { vec, len }
+    }
+
+    /// Returns the bit value from a given position.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use aabel_rs::bits::{Bit, BVec};
+    ///
+    /// let mut bvec = BVec::with_length(10);
+    /// bvec.set_bit(4);
+    /// bvec.set_bit(6);
+    /// assert_eq!(bvec.get_bit(0), Bit::Zero);
+    /// assert_eq!(bvec.get_bit(4), Bit::One);
+    /// ```
+    pub fn get_bit(&self, bit: usize) -> Bit {
+        let pos = Position::from(bit);
+        let byte: Byte = self.vec[pos.idx].into();
+        byte.get_bit(pos.bit)
+    }
+
+    /// Sets the bit value from a given position.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use aabel_rs::bits::{Bit, BVec};
+    ///
+    /// let mut bvec = BVec::with_length(10);
+    /// bvec.set_bit(4);
+    /// bvec.set_bit(6);
+    /// assert_eq!(bvec.get_bit(0), Bit::Zero);
+    /// assert_eq!(bvec.get_bit(4), Bit::One);
+    /// ```
+    pub fn set_bit(&mut self, bit: usize) {
+        let pos = Position::from(bit);
+        let byte: Byte = self.vec[pos.idx].into();
+        let byte: u8 = byte.set_bit(pos.bit).into();
+
+        let _ = std::mem::replace(&mut self.vec[pos.idx], byte);
+    }
+
+    /// Resets the bit value from a given position.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use aabel_rs::bits::{Bit, BVec};
+    ///
+    /// let mut bvec = BVec::with_length(10);
+    /// bvec.set_bit(4);
+    /// assert_eq!(bvec.get_bit(4), Bit::One);
+    ///
+    /// bvec.reset_bit(4);
+    /// assert_eq!(bvec.get_bit(4), Bit::Zero);
+    /// ```
+    pub fn reset_bit(&mut self, bit: usize) {
+        let pos = Position::from(bit);
+        let byte: Byte = self.vec[pos.idx].into();
+
+        let byte: u8 = byte.reset_bit(pos.bit).into();
+
+        let _ = std::mem::replace(&mut self.vec[pos.idx], byte);
+    }
+
+    /// Toggles the bit value from a given position.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use aabel_rs::bits::BVec;
+    ///
+    /// let mut bvec = BVec::with_length(10);
+    /// bvec.toggle_bit(4);
+    /// bvec.toggle_bit(6);
+    /// ```
+    pub fn toggle_bit(&mut self, bit: usize) {
+        let pos = Position::from(bit);
+        let byte: Byte = self.vec[pos.idx].into();
+        let byte: u8 = byte.toggle_bit(pos.bit).into();
+
+        let _ = std::mem::replace(&mut self.vec[pos.idx], byte);
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn with_length_() {
+        let bvec = BVec::with_length(10);
+        assert_eq!(10, bvec.len());
+        assert_eq!(2, bvec.vec.capacity());
+    }
+
+    #[test]
+    fn set_bit_() {
+        let mut bvec = BVec::with_length(10);
+        bvec.set_bit(4);
+        bvec.set_bit(6);
+        assert_eq!(10, bvec.vec[0]);
+    }
+
+    #[test]
+    fn reset_bit_() {
+        let mut bvec = BVec::with_length(10);
+        bvec.set_bit(4);
+        bvec.set_bit(6);
+        assert_eq!(10, bvec.vec[0]);
+
+        bvec.reset_bit(6);
+        assert_eq!(8, bvec.vec[0]);
+    }
+
+    #[test]
+    fn get_bit_() {
+        let mut bvec = BVec::with_length(10);
+        bvec.set_bit(4);
+        bvec.set_bit(6);
+
+        assert_eq!(bvec.get_bit(0), Bit::Zero);
+        assert_eq!(bvec.get_bit(4), Bit::One);
+    }
+
+    #[test]
+    fn toggle_bit_() {
+        let mut bvec = BVec::with_length(10);
+        bvec.toggle_bit(4);
+        bvec.toggle_bit(6);
+
+        assert_eq!(10, bvec.vec[0]);
+    }
+}
