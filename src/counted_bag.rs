@@ -482,8 +482,7 @@ mod tests {
         cs.insert('b');
 
         let mut c = 0;
-        for key in cs.keys() {
-            println!("{key}");
+        for _key in cs.keys() {
             c += 1;
         }
 
