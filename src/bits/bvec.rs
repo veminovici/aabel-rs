@@ -113,6 +113,22 @@ impl BVec {
     }
 }
 
+impl Extend<Bit> for BVec {
+    fn extend<T: IntoIterator<Item = Bit>>(&mut self, iter: T) {
+        for bit in iter {
+            if self.len == self.vec.capacity() {
+                self.vec.push(0);
+            }
+
+            if bit == Bit::One {
+                self.set_bit(self.len);
+            }
+
+            self.len += 1;
+        }
+    }
+}
+
 pub struct Iter {
     bvec: BVec,
     current: usize,
@@ -216,5 +232,39 @@ mod tests {
         assert_eq!(iter.next(), Some(Bit::Zero));
 
         assert_eq!(iter.next(), None);
+    }
+
+    #[test]
+    fn extend_() {
+        let mut bvec = BVec::with_length(0);
+        assert_eq!(0, bvec.len);
+        assert_eq!(0, bvec.vec.capacity());
+
+        let elements = [Bit::One, Bit::Zero, Bit::One, Bit::Zero];
+        bvec.extend(elements);
+
+        assert_eq!(4, bvec.len);
+        assert_eq!(bvec.get_bit(0), Bit::One);
+        assert_eq!(bvec.get_bit(1), Bit::Zero);
+        assert_eq!(bvec.get_bit(2), Bit::One);
+        assert_eq!(bvec.get_bit(3), Bit::Zero);
+
+        let elements = [Bit::Zero, Bit::Zero, Bit::Zero, Bit::One];
+        bvec.extend(elements);
+
+        assert_eq!(8, bvec.len);
+        assert_eq!(bvec.get_bit(4), Bit::Zero);
+        assert_eq!(bvec.get_bit(5), Bit::Zero);
+        assert_eq!(bvec.get_bit(6), Bit::Zero);
+        assert_eq!(bvec.get_bit(7), Bit::One);
+
+        let elements = [Bit::One, Bit::Zero, Bit::One, Bit::Zero];
+        bvec.extend(elements);
+
+        assert_eq!(12, bvec.len);
+        assert_eq!(bvec.get_bit(8), Bit::One);
+        assert_eq!(bvec.get_bit(9), Bit::Zero);
+        assert_eq!(bvec.get_bit(10), Bit::One);
+        assert_eq!(bvec.get_bit(11), Bit::Zero);
     }
 }
