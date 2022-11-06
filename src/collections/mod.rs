@@ -1,3 +1,5 @@
+//! Different structures for managing data.
+
 mod counted_bag;
 mod shingles;
 

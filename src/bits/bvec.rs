@@ -1,5 +1,6 @@
 use super::{Bit, Byte, Position};
 
+/// A vector of bits. Each bit can be accessed and written individually.
 pub struct BVec {
     vec: Vec<u8>,
     len: usize,
