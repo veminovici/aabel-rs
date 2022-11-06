@@ -55,7 +55,7 @@ The distances are implemented by the **rust_aabel::distances::Distance** trait.
 
 ### 2.1 Jaccard distance
 ```rust
-use rust_aabel::distances::Distance;
+use aabel_rs::distances::Distance;
 let xs = ['a','b', 'b', 'c', 'c', 'c'];
 let ys = ['b', 'c', 'c', 'd', 'd', 'd'];
 let it = xs.into_iter().jaccard1(ys);
@@ -64,14 +64,14 @@ assert_eq!(it, 0.25);
 
 ### 2.2. Euclidean distance
 ```rust
-use rust_aabel::distances::Distance;
+use aabel_rs::distances::Distance;
 let it = [3., 4.].into_iter().euclid([0., 0.]);
 assert_eq!(5., it)
 ```
 
 ### 2.3. Manhattan distance
 ```rust
-use rust_aabel::distances::Distance;
+use aabel_rs::distances::Distance;
 let it = [3., 4.].into_iter().manhattan([0., 0.]);
 assert_eq!(7., it)
 ```
