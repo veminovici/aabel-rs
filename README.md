@@ -12,10 +12,11 @@ A Rust crate for different base functionalities.
   - [Euclidean](https://github.com/veminovici/aabel-rs#22-euclidean-distance)
   - [Manhattan](https://github.com/veminovici/aabel-rs#23-manhattan-distance)
 - [Bits](https://github.com/veminovici/aabel-rs#3-bitwise-operations)
-- [Test Coverage](https://github.com/veminovici/aabel-rs#test-coverage)
+- [Tests](https://github.com/veminovici/aabel-rs#4-test)
+  - [Test Coverage](https://github.com/veminovici/aabel-rs#test-coverage)
+  - [Property Testting]()
 
 ## 1. Collections
-
 
 ### 1.1. CountedBag
 **CountedBag** is a data structure which is counting the number of occurences of a given key inside a collection of keys.
@@ -80,7 +81,9 @@ assert_eq!(7., it)
 ## 3. Bitwise Operations
 Implementations for bit-wise manipulation as well for a vector of bits.
 
-## Test Coverage
+## 4. Tests
+
+### 4.1. Test Coverage
 To get the test coverage, I use the [grcov](https://github.com/mozilla/grcov#how-to-get-grcov).
 See the instructions [steps](https://github.com/mozilla/grcov#example-how-to-generate-source-based-coverage-for-a-rust-project).
 
@@ -92,3 +95,6 @@ cargo test
 grcov ./coverage -s . --binary-path ./target/debug/ -t html --branch --ignore-not-existing -o ./target/debug/coverage/
 open ./target/debug/coverage/index.html
 ```
+
+### 4.2. Property Based Testing
+The library is using property based testing. It uses the [quickcheck](https://docs.rs/quickcheck/latest/quickcheck/) crate.
