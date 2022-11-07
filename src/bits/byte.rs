@@ -2,6 +2,18 @@ use std::fmt::{Binary, Debug, Display, LowerHex, UpperHex};
 
 use super::Bit;
 
+const MASKS_SET: [u8; 8] = [1 << 7, 1 << 6, 1 << 5, 1 << 4, 1 << 3, 1 << 2, 1 << 1, 1];
+const MASKS_RESET: [u8; 8] = [
+    !(1 << 7),
+    !(1 << 6),
+    !(1 << 5),
+    !(1 << 4),
+    !(1 << 3),
+    !(1 << 2),
+    !(1 << 1),
+    !1,
+];
+
 /// Representation of a byte
 ///
 /// # Examples
@@ -105,29 +117,25 @@ impl Byte {
 
     #[inline]
     pub fn get_bit(&self, bit: u8) -> Bit {
-        let mask = 1 << (7 - bit);
-        if self.0 & mask == 0 {
-            Bit::Zero
-        } else {
-            Bit::One
-        }
+        let mask = MASKS_SET[bit as usize];
+        (self.0 & mask).into()
     }
 
     #[inline]
     pub fn set_bit(self, bit: u8) -> Self {
-        let mask = 1 << (7 - bit);
+        let mask = MASKS_SET[bit as usize];
         Self(self.0 | mask)
     }
 
     #[inline]
     pub fn reset_bit(self, bit: u8) -> Self {
-        let mask = !(1 << (7 - bit));
+        let mask = MASKS_RESET[bit as usize];
         Self(self.0 & mask)
     }
 
     #[inline]
     pub fn toggle_bit(self, bit: u8) -> Self {
-        let mask = 1 << (7 - bit);
+        let mask = MASKS_SET[bit as usize];
         Self(self.0 ^ mask)
     }
 

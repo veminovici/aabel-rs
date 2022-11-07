@@ -117,6 +117,10 @@ impl Extend<Bit> for BVec {
     fn extend<T: IntoIterator<Item = Bit>>(&mut self, iter: T) {
         for bit in iter {
             if self.len == self.vec.capacity() {
+                self.vec.extend([0, 0, 0, 0]);
+                self.vec.push(0);
+                self.vec.push(0);
+                self.vec.push(0);
                 self.vec.push(0);
             }
 
