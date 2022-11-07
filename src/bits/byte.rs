@@ -1,5 +1,4 @@
 use std::fmt::{Binary, Debug, Display, LowerHex, UpperHex};
-
 use super::Bit;
 
 const MASKS_SET: [u8; 8] = [1 << 7, 1 << 6, 1 << 5, 1 << 4, 1 << 3, 1 << 2, 1 << 1, 1];
@@ -13,6 +12,9 @@ const MASKS_RESET: [u8; 8] = [
     !(1 << 1),
     !1,
 ];
+
+// #[cfg(test)]
+// #[macro_use(quickcheck)]
 
 /// Representation of a byte
 ///
@@ -186,6 +188,14 @@ impl Iterator for Iter {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use quickcheck_macros::quickcheck;
+
+
+    #[quickcheck]
+    fn prop_from_into_(x: u8) -> bool {
+        let byte = Byte::from(x);
+        x == byte.into()
+    }
 
     #[test]
     fn display_() {
