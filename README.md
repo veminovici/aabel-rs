@@ -12,9 +12,9 @@ A Rust crate for different base functionalities.
   - [Euclidean](https://github.com/veminovici/aabel-rs#22-euclidean-distance)
   - [Manhattan](https://github.com/veminovici/aabel-rs#23-manhattan-distance)
 - [Bits](https://github.com/veminovici/aabel-rs#3-bitwise-operations)
-- [Tests](https://github.com/veminovici/aabel-rs#4-test)
-  - [Test Coverage](https://github.com/veminovici/aabel-rs#test-coverage)
-  - [Property Testting]()
+- [Tests](https://github.com/veminovici/aabel-rs#4-tests)
+  - [Test Coverage](https://github.com/veminovici/aabel-rs#41-test-coverage)
+  - [Property Testting](https://github.com/veminovici/aabel-rs#42-property-based-testing)
 
 ## 1. Collections
 
