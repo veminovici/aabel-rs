@@ -1,5 +1,5 @@
-use std::fmt::{Binary, Debug, Display, LowerHex, UpperHex};
 use super::Bit;
+use std::fmt::{Binary, Debug, Display, LowerHex, UpperHex};
 
 const MASKS_SET: [u8; 8] = [1 << 7, 1 << 6, 1 << 5, 1 << 4, 1 << 3, 1 << 2, 1 << 1, 1];
 const MASKS_RESET: [u8; 8] = [
@@ -190,11 +190,21 @@ mod tests {
     use super::*;
     use quickcheck_macros::quickcheck;
 
+    impl quickcheck::Arbitrary for Byte {
+        fn arbitrary(g: &mut quickcheck::Gen) -> Self {
+            u8::arbitrary(g).into()
+        }
+    }
 
     #[quickcheck]
     fn prop_from_into_(x: u8) -> bool {
         let byte = Byte::from(x);
         x == byte.into()
+    }
+
+    #[quickcheck]
+    fn prop_display_(byte: Byte) -> bool {
+        !format!("byte: {byte}").is_empty()
     }
 
     #[test]
