@@ -21,7 +21,8 @@ A Rust crate for different base functionalities.
 
 ### 1.1. CountedBag
 **CountedBag** is a data structure which is counting the number of occurences of a given key inside a collection of keys.
-It is implemented in the **rust_aabel::counted_bag** module. You can find the implementation at [counted_bag.rs](https://github.com/veminovici/aabel-rs/blob/main/src/counted_bag.rs)
+It is implemented in the **aabel_rs::collections::CountedBag** module. 
+You can find the implementation at [counted_bag.rs](./src/collections/counted_bag.rs)
 
 ```rust
 use aabel_rs::collections::CountedBag;
@@ -39,7 +40,8 @@ assert_eq!(iter.count(), 2);
 
 ### 1.2 Shingles
 **Shingles** is an iterator over a slice which returns the shingles of a given size.
-It is implemented in the *8rust_aabel::shingles** module. You can find the implementation at [shingles.rs](https://github.com/veminovici/aabel-rs/blob/main/src/shingles.rs)
+It is implemented in the **aabel_rs::collections::Shingles** module. 
+You can find the implementation at [shingles.rs](./src/collections/shingles.rs)
 
 ```rust
 use aabel_rs::collections::{shingles, Shingles};
@@ -55,6 +57,8 @@ assert_eq!(None, ss.next());
 
 ### 1.3. Permutations
 **Permutations** can generate all permutations for a given set.
+It is implemented in the **aabel_rs::colllections::Permutations**.
+You can find the implementation at [permutations.rs](./src/collections/permutations.rs).
 
 ```rust
 use aabel_rs::collections::Permutations;
@@ -67,9 +71,11 @@ assert_eq!(24, results.len());
 ```
 
 ## 2. Distances
-The distances are implemented by the **rust_aabel::distances::Distance** trait.
+The distances are implemented by the **aabel_rs::distances::Distance** trait.
 
 ### 2.1 Jaccard distance
+You can find the implementation at [jaccard.rs](./src/distances/jaccard.rs).
+
 ```rust
 use aabel_rs::distances::Distance;
 let xs = ['a','b', 'b', 'c', 'c', 'c'];
@@ -79,6 +85,8 @@ assert_eq!(it, 0.25);
 ```
 
 ### 2.2. Euclidean distance
+You can find the implementation at [euclid.rs](./src/distances/euclid.rs).
+
 ```rust
 use aabel_rs::distances::Distance;
 let it = [3., 4.].into_iter().euclid([0., 0.]);
@@ -86,6 +94,8 @@ assert_eq!(5., it)
 ```
 
 ### 2.3. Manhattan distance
+You can find the implementation at [manhattan.rs](./src/distances/manhattan.rs).
+
 ```rust
 use aabel_rs::distances::Distance;
 let it = [3., 4.].into_iter().manhattan([0., 0.]);
