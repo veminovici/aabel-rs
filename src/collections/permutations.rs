@@ -39,10 +39,7 @@ impl<'a, T> Permutations<'a, T>
 where
     T: Clone + Default,
 {
-    fn to_result(&self) -> Vec<T>
-    where
-        T: Clone + Default,
-    {
+    fn to_result(&self) -> Vec<T> {
         let mut res: Vec<T> = vec![Default::default(); self.len];
         res.clone_from_slice(self.arr);
         res
