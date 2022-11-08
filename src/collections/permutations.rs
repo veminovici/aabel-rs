@@ -46,6 +46,17 @@ where
     }
 
     /// Gnerates all permutations.
+    /// 
+    /// # Examples
+    /// 
+    /// ```
+    /// use aabel_rs::collections::Permutations;
+    ///
+    /// let source = &mut [1, 2, 3, 4];
+    /// let mut permutations = Permutations::new(4, source);
+    /// let results = permutations.generate();
+    /// assert_eq!(24, results.len());
+    /// ```
     pub fn generate(&mut self) -> Vec<Vec<T>> {
         let mut results: Vec<Vec<T>> = vec![];
         results.push(self.to_result());
