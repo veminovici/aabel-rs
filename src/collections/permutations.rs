@@ -1,4 +1,4 @@
-use std::{fmt::Debug, ptr};
+use std::ptr;
 
 /// Builder that can generate the permutations
 /// for a slice set of a given size.
@@ -33,12 +33,23 @@ impl<'a, T> Permutations<'a, T> {
             ptr::swap(pa, pb);
         }
     }
+}
+
+impl<'a, T> Permutations<'a, T>
+where
+    T: Clone + Default,
+{
+    fn to_result(&self) -> Vec<T>
+    where
+        T: Clone + Default,
+    {
+        let mut res: Vec<T> = vec![Default::default(); self.len];
+        res.clone_from_slice(self.arr);
+        res
+    }
 
     /// Gnerates all permutations.
-    pub fn generate(&mut self) -> Vec<Vec<T>>
-    where
-        T: Clone + Debug + Default,
-    {
+    pub fn generate(&mut self) -> Vec<Vec<T>> {
         let mut results: Vec<Vec<T>> = vec![];
         results.push(self.to_result());
 
@@ -62,17 +73,6 @@ impl<'a, T> Permutations<'a, T> {
         }
 
         results
-    }
-}
-
-impl<'a, T> Permutations<'a, T> {
-    fn to_result(&self) -> Vec<T>
-    where
-        T: Clone + Default,
-    {
-        let mut res: Vec<T> = vec![Default::default(); self.len];
-        res.clone_from_slice(self.arr);
-        res
     }
 }
 
