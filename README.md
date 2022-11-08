@@ -57,7 +57,7 @@ assert_eq!(None, ss.next());
 **Permutations** can generate all permutations for a given set.
 
 ```rust
-use aabel_rs::collections::{Permutations}l
+use aabel_rs::collections::Permutations;
 
 let source = &mut [1, 2, 3, 4];
 let mut permutations = Permutations::new(4, source);
