@@ -22,6 +22,14 @@ pub struct Permutations<'a, T> {
 
 impl<'a, T> Permutations<'a, T> {
     /// Creates a new permutation builder instance.
+    /// # Examples
+    /// 
+    /// ```
+    /// use aabel_rs::collections::Permutations;
+    ///
+    /// let source = &mut [1, 2, 3, 4];
+    /// let mut permutations = Permutations::new(4, source);
+    /// ```
     pub fn new(len: usize, arr: &'a mut [T]) -> Self {
         Self { arr, len }
     }
