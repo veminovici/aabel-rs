@@ -11,3 +11,4 @@ itertools = "0.10.5"
 [dev-dependencies]
 quickcheck = "1.0"
 quickcheck_macros = "1.0"
+rand = "0.8.5"

@@ -7,6 +7,7 @@ A Rust crate for different base functionalities.
 - [Collections](https://github.com/veminovici/aabel-rs#1-collections)
   - [CountedBag](https://github.com/veminovici/aabel-rs#11-countedbag)
   - [Shringles](https://github.com/veminovici/aabel-rs#12-shingles)
+  - [Permutations](#13-permutations)
 - [Distances](https://github.com/veminovici/aabel-rs#2-distances)
   - [Jaccard](https://github.com/veminovici/aabel-rs#21-jaccard-distance)
   - [Euclidean](https://github.com/veminovici/aabel-rs#22-euclidean-distance)
@@ -37,7 +38,7 @@ assert_eq!(iter.count(), 2);
 ```
 
 ### 1.2 Shingles
-**Shingles** is am iterator over a slice which returns the shingles of a given size.
+**Shingles** is an iterator over a slice which returns the shingles of a given size.
 It is implemented in the *8rust_aabel::shingles** module. You can find the implementation at [shingles.rs](https://github.com/veminovici/aabel-rs/blob/main/src/shingles.rs)
 
 ```rust
@@ -50,6 +51,19 @@ let mut ss = shingles(source.as_slice(), 2, is_start);
 assert_eq!(Some([1, 2].as_slice()), ss.next());
 assert_eq!(Some([2, 3].as_slice()), ss.next());
 assert_eq!(None, ss.next());
+```
+
+### 1.3. Permutations
+**Permutations** can generate all permutations for a given set.
+
+```rust
+use aabel_rs::collections::{Permutations}l
+
+let source = &mut [1, 2, 3, 4];
+let mut permutations = Permutations::new(4, source);
+
+let results = permutations.generate();
+assert_eq!(24, results.len());
 ```
 
 ## 2. Distances
