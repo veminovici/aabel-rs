@@ -22,6 +22,7 @@ pub struct Permutations<'a, T> {
 
 impl<'a, T> Permutations<'a, T> {
     /// Creates a new permutation builder instance.
+    /// 
     /// # Examples
     /// 
     /// ```
