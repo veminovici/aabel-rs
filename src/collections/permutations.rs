@@ -22,9 +22,9 @@ pub struct Permutations<'a, T> {
 
 impl<'a, T> Permutations<'a, T> {
     /// Creates a new permutation builder instance.
-    /// 
+    ///
     /// # Examples
-    /// 
+    ///
     /// ```
     /// use aabel_rs::collections::Permutations;
     ///
@@ -55,9 +55,9 @@ where
     }
 
     /// Gnerates all permutations.
-    /// 
+    ///
     /// # Examples
-    /// 
+    ///
     /// ```
     /// use aabel_rs::collections::Permutations;
     ///

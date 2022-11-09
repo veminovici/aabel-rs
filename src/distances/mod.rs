@@ -22,12 +22,14 @@
 //!
 //! This version of itertools requires Rust 1.32 or later.
 
+pub(crate) mod cosine;
 mod distance;
 pub(crate) mod euclid;
 pub(crate) mod hamming;
 pub(crate) mod jaccard;
 pub(crate) mod manhattan;
 
+pub use cosine::cosine;
 pub use distance::*;
 pub use euclid::euclid;
 pub use hamming::*;
